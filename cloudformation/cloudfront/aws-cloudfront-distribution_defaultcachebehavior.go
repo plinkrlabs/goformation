@@ -13,6 +13,11 @@ type Distribution_DefaultCacheBehavior struct {
 	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distribution-defaultcachebehavior.html#cfn-cloudfront-distribution-defaultcachebehavior-allowedmethods
 	AllowedMethods []string `json:"AllowedMethods,omitempty"`
 
+	// CachePolicyId AWS CloudFormation Property
+	// Required: false
+	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distribution-defaultcachebehavior.html#cfn-cloudfront-distribution-defaultcachebehavior-cachepolicyid
+	CachePolicyId string `json:"CachePolicyId,omitempty"`
+
 	// CachedMethods AWS CloudFormation Property
 	// Required: false
 	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distribution-defaultcachebehavior.html#cfn-cloudfront-distribution-defaultcachebehavior-cachedmethods
@@ -34,7 +39,7 @@ type Distribution_DefaultCacheBehavior struct {
 	FieldLevelEncryptionId string `json:"FieldLevelEncryptionId,omitempty"`
 
 	// ForwardedValues AWS CloudFormation Property
-	// Required: true
+	// Required: false
 	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distribution-defaultcachebehavior.html#cfn-cloudfront-distribution-defaultcachebehavior-forwardedvalues
 	ForwardedValues *Distribution_ForwardedValues `json:"ForwardedValues,omitempty"`
 
@@ -52,6 +57,16 @@ type Distribution_DefaultCacheBehavior struct {
 	// Required: false
 	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distribution-defaultcachebehavior.html#cfn-cloudfront-distribution-defaultcachebehavior-minttl
 	MinTTL float64 `json:"MinTTL,omitempty"`
+
+	// OriginRequestPolicyId AWS CloudFormation Property
+	// Required: false
+	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distribution-defaultcachebehavior.html#cfn-cloudfront-distribution-defaultcachebehavior-originrequestpolicyid
+	OriginRequestPolicyId string `json:"OriginRequestPolicyId,omitempty"`
+
+	// RealtimeLogConfigArn AWS CloudFormation Property
+	// Required: false
+	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distribution-defaultcachebehavior.html#cfn-cloudfront-distribution-defaultcachebehavior-realtimelogconfigarn
+	RealtimeLogConfigArn string `json:"RealtimeLogConfigArn,omitempty"`
 
 	// SmoothStreaming AWS CloudFormation Property
 	// Required: false
@@ -75,6 +90,9 @@ type Distribution_DefaultCacheBehavior struct {
 
 	// AWSCloudFormationDeletionPolicy represents a CloudFormation DeletionPolicy
 	AWSCloudFormationDeletionPolicy policies.DeletionPolicy `json:"-"`
+
+	// AWSCloudFormationUpdateReplacePolicy represents a CloudFormation UpdateReplacePolicy
+	AWSCloudFormationUpdateReplacePolicy policies.UpdateReplacePolicy `json:"-"`
 
 	// AWSCloudFormationDependsOn stores the logical ID of the resources to be created before this resource
 	AWSCloudFormationDependsOn []string `json:"-"`

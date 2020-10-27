@@ -12,6 +12,11 @@ import (
 // See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-userpoolclient.html
 type UserPoolClient struct {
 
+	// AccessTokenValidity AWS CloudFormation Property
+	// Required: false
+	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-userpoolclient.html#cfn-cognito-userpoolclient-accesstokenvalidity
+	AccessTokenValidity int `json:"AccessTokenValidity,omitempty"`
+
 	// AllowedOAuthFlows AWS CloudFormation Property
 	// Required: false
 	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-userpoolclient.html#cfn-cognito-userpoolclient-allowedoauthflows
@@ -57,6 +62,11 @@ type UserPoolClient struct {
 	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-userpoolclient.html#cfn-cognito-userpoolclient-generatesecret
 	GenerateSecret bool `json:"GenerateSecret,omitempty"`
 
+	// IdTokenValidity AWS CloudFormation Property
+	// Required: false
+	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-userpoolclient.html#cfn-cognito-userpoolclient-idtokenvalidity
+	IdTokenValidity int `json:"IdTokenValidity,omitempty"`
+
 	// LogoutURLs AWS CloudFormation Property
 	// Required: false
 	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-userpoolclient.html#cfn-cognito-userpoolclient-logouturls
@@ -82,6 +92,11 @@ type UserPoolClient struct {
 	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-userpoolclient.html#cfn-cognito-userpoolclient-supportedidentityproviders
 	SupportedIdentityProviders []string `json:"SupportedIdentityProviders,omitempty"`
 
+	// TokenValidityUnits AWS CloudFormation Property
+	// Required: false
+	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-userpoolclient.html#cfn-cognito-userpoolclient-tokenvalidityunits
+	TokenValidityUnits *UserPoolClient_TokenValidityUnits `json:"TokenValidityUnits,omitempty"`
+
 	// UserPoolId AWS CloudFormation Property
 	// Required: true
 	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-userpoolclient.html#cfn-cognito-userpoolclient-userpoolid
@@ -94,6 +109,9 @@ type UserPoolClient struct {
 
 	// AWSCloudFormationDeletionPolicy represents a CloudFormation DeletionPolicy
 	AWSCloudFormationDeletionPolicy policies.DeletionPolicy `json:"-"`
+
+	// AWSCloudFormationUpdateReplacePolicy represents a CloudFormation UpdateReplacePolicy
+	AWSCloudFormationUpdateReplacePolicy policies.UpdateReplacePolicy `json:"-"`
 
 	// AWSCloudFormationDependsOn stores the logical ID of the resources to be created before this resource
 	AWSCloudFormationDependsOn []string `json:"-"`
@@ -115,19 +133,21 @@ func (r *UserPoolClient) AWSCloudFormationType() string {
 func (r UserPoolClient) MarshalJSON() ([]byte, error) {
 	type Properties UserPoolClient
 	return json.Marshal(&struct {
-		Type           string
-		Properties     Properties
-		DependsOn      []string                `json:"DependsOn,omitempty"`
-		Metadata       map[string]interface{}  `json:"Metadata,omitempty"`
-		DeletionPolicy policies.DeletionPolicy `json:"DeletionPolicy,omitempty"`
-		Condition      string                  `json:"Condition,omitempty"`
+		Type                string
+		Properties          Properties
+		DependsOn           []string                     `json:"DependsOn,omitempty"`
+		Metadata            map[string]interface{}       `json:"Metadata,omitempty"`
+		DeletionPolicy      policies.DeletionPolicy      `json:"DeletionPolicy,omitempty"`
+		UpdateReplacePolicy policies.UpdateReplacePolicy `json:"UpdateReplacePolicy,omitempty"`
+		Condition           string                       `json:"Condition,omitempty"`
 	}{
-		Type:           r.AWSCloudFormationType(),
-		Properties:     (Properties)(r),
-		DependsOn:      r.AWSCloudFormationDependsOn,
-		Metadata:       r.AWSCloudFormationMetadata,
-		DeletionPolicy: r.AWSCloudFormationDeletionPolicy,
-		Condition:      r.AWSCloudFormationCondition,
+		Type:                r.AWSCloudFormationType(),
+		Properties:          (Properties)(r),
+		DependsOn:           r.AWSCloudFormationDependsOn,
+		Metadata:            r.AWSCloudFormationMetadata,
+		DeletionPolicy:      r.AWSCloudFormationDeletionPolicy,
+		UpdateReplacePolicy: r.AWSCloudFormationUpdateReplacePolicy,
+		Condition:           r.AWSCloudFormationCondition,
 	})
 }
 
@@ -136,12 +156,13 @@ func (r UserPoolClient) MarshalJSON() ([]byte, error) {
 func (r *UserPoolClient) UnmarshalJSON(b []byte) error {
 	type Properties UserPoolClient
 	res := &struct {
-		Type           string
-		Properties     *Properties
-		DependsOn      []string
-		Metadata       map[string]interface{}
-		DeletionPolicy string
-		Condition      string
+		Type                string
+		Properties          *Properties
+		DependsOn           []string
+		Metadata            map[string]interface{}
+		DeletionPolicy      string
+		UpdateReplacePolicy string
+		Condition           string
 	}{}
 
 	dec := json.NewDecoder(bytes.NewReader(b))
@@ -164,6 +185,9 @@ func (r *UserPoolClient) UnmarshalJSON(b []byte) error {
 	}
 	if res.DeletionPolicy != "" {
 		r.AWSCloudFormationDeletionPolicy = policies.DeletionPolicy(res.DeletionPolicy)
+	}
+	if res.UpdateReplacePolicy != "" {
+		r.AWSCloudFormationUpdateReplacePolicy = policies.UpdateReplacePolicy(res.UpdateReplacePolicy)
 	}
 	if res.Condition != "" {
 		r.AWSCloudFormationCondition = res.Condition
