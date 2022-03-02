@@ -37327,10 +37327,10 @@ var CloudformationSchema = `{
                             "type": "string"
                         },
                         "LogPublishingOptions": {
-                            "additionalProperties": true,
+                            "additionalProperties": false,
                             "patternProperties": {
                                 "^[a-zA-Z0-9]+$": {
-                                    "type": "string"
+                                    "$ref": "#/definitions/AWS::OpenSearchService::Domain.LogPublishingOption"
                                 }
                             },
                             "type": "object"
@@ -37549,6 +37549,18 @@ var CloudformationSchema = `{
             "properties": {
                 "AvailabilityZoneCount": {
                     "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "AWS::OpenSearchService::Domain.LogPublishingOption": {
+            "additionalProperties": false,
+            "properties": {
+                "CloudWatchLogsLogGroupArn": {
+                    "type": "string"
+                },
+                "Enabled": {
+                    "type": "boolean"
                 }
             },
             "type": "object"

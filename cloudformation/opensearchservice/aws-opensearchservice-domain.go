@@ -192,24 +192,41 @@ func (r *Domain_EncryptionAtRestOptions) AWSCloudFormationType() string {
 	return "AWS::OpenSearchService::Domain.EncryptionAtRestOptions"
 }
 
+// Domain_LogPublishingOption AWS CloudFormation Resource (AWS::OpenSearchService::Domain.LogPublishingOption)
+// See: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opensearchservice-domain-logpublishingoption.html
+type Domain_LogPublishingOption struct {
+	CloudWatchLogsLogGroupArn string `json:"CloudWatchLogsLogGroupArn,omitempty"`
+	Enabled                   bool   `json:"Enabled,omitempty"`
+
+	AWSCloudFormationDeletionPolicy      policies.DeletionPolicy      `json:"-"`
+	AWSCloudFormationUpdateReplacePolicy policies.UpdateReplacePolicy `json:"-"`
+	AWSCloudFormationDependsOn           []string                     `json:"-"`
+	AWSCloudFormationMetadata            map[string]interface{}       `json:"-"`
+	AWSCloudFormationCondition           string                       `json:"-"`
+}
+
+func (r *Domain_LogPublishingOption) AWSCloudFormationType() string {
+	return "AWS::OpenSearchService::Domain.LogPublishingOption"
+}
+
 // Domain AWS CloudFormation Resource (AWS::OpenSearchService::Domain)
 // See: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-opensearchservice-domain.html
 type Domain struct {
-	AccessPolicies              interface{}                          `json:"AccessPolicies,omitempty"`
-	AdvancedOptions             map[string]string                    `json:"AdvancedOptions,omitempty"`
-	AdvancedSecurityOptions     *Domain_AdvancedSecurityOptionsInput `json:"AdvancedSecurityOptions,omitempty"`
-	ClusterConfig               *Domain_ClusterConfig                `json:"ClusterConfig,omitempty"`
-	CognitoOptions              *Domain_CognitoOptions               `json:"CognitoOptions,omitempty"`
-	DomainEndpointOptions       *Domain_DomainEndpointOptions        `json:"DomainEndpointOptions,omitempty"`
-	DomainName                  string                               `json:"DomainName,omitempty"`
-	EBSOptions                  *Domain_EBSOptions                   `json:"EBSOptions,omitempty"`
-	EncryptionAtRestOptions     *Domain_EncryptionAtRestOptions      `json:"EncryptionAtRestOptions,omitempty"`
-	EngineVersion               string                               `json:"EngineVersion,omitempty"`
-	LogPublishingOptions        map[string]string                    `json:"LogPublishingOptions,omitempty"`
-	NodeToNodeEncryptionOptions *Domain_NodeToNodeEncryptionOptions  `json:"NodeToNodeEncryptionOptions,omitempty"`
-	SnapshotOptions             *Domain_SnapshotOptions              `json:"SnapshotOptions,omitempty"`
-	Tags                        []tags.Tag                           `json:"Tags,omitempty"`
-	VPCOptions                  *Domain_VPCOptions                   `json:"VPCOptions,omitempty"`
+	AccessPolicies              interface{}                           `json:"AccessPolicies,omitempty"`
+	AdvancedOptions             map[string]string                     `json:"AdvancedOptions,omitempty"`
+	AdvancedSecurityOptions     *Domain_AdvancedSecurityOptionsInput  `json:"AdvancedSecurityOptions,omitempty"`
+	ClusterConfig               *Domain_ClusterConfig                 `json:"ClusterConfig,omitempty"`
+	CognitoOptions              *Domain_CognitoOptions                `json:"CognitoOptions,omitempty"`
+	DomainEndpointOptions       *Domain_DomainEndpointOptions         `json:"DomainEndpointOptions,omitempty"`
+	DomainName                  string                                `json:"DomainName,omitempty"`
+	EBSOptions                  *Domain_EBSOptions                    `json:"EBSOptions,omitempty"`
+	EncryptionAtRestOptions     *Domain_EncryptionAtRestOptions       `json:"EncryptionAtRestOptions,omitempty"`
+	EngineVersion               string                                `json:"EngineVersion,omitempty"`
+	LogPublishingOptions        map[string]Domain_LogPublishingOption `json:"LogPublishingOptions,omitempty"`
+	NodeToNodeEncryptionOptions *Domain_NodeToNodeEncryptionOptions   `json:"NodeToNodeEncryptionOptions,omitempty"`
+	SnapshotOptions             *Domain_SnapshotOptions               `json:"SnapshotOptions,omitempty"`
+	Tags                        []tags.Tag                            `json:"Tags,omitempty"`
+	VPCOptions                  *Domain_VPCOptions                    `json:"VPCOptions,omitempty"`
 
 	AWSCloudFormationDeletionPolicy      policies.DeletionPolicy      `json:"-"`
 	AWSCloudFormationUpdateReplacePolicy policies.UpdateReplacePolicy `json:"-"`
