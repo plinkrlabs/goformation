@@ -2,6 +2,7 @@ package cloudformation
 
 import (
 	"fmt"
+
 	"github.com/awslabs/goformation/v4/cloudformation/accessanalyzer"
 	"github.com/awslabs/goformation/v4/cloudformation/acmpca"
 	"github.com/awslabs/goformation/v4/cloudformation/amazonmq"
@@ -97,6 +98,7 @@ import (
 	"github.com/awslabs/goformation/v4/cloudformation/msk"
 	"github.com/awslabs/goformation/v4/cloudformation/neptune"
 	"github.com/awslabs/goformation/v4/cloudformation/networkmanager"
+	"github.com/awslabs/goformation/v4/cloudformation/opensearchservice"
 	"github.com/awslabs/goformation/v4/cloudformation/opsworks"
 	"github.com/awslabs/goformation/v4/cloudformation/opsworkscm"
 	"github.com/awslabs/goformation/v4/cloudformation/pinpoint"
@@ -405,6 +407,7 @@ func AllResources() map[string]Resource {
 		"AWS::ElasticLoadBalancingV2::LoadBalancer":                   &elasticloadbalancingv2.LoadBalancer{},
 		"AWS::ElasticLoadBalancingV2::TargetGroup":                    &elasticloadbalancingv2.TargetGroup{},
 		"AWS::Elasticsearch::Domain":                                  &elasticsearch.Domain{},
+		"AWS::OpenSearchService::Domain":                              &opensearchservice.Domain{},
 		"AWS::EventSchemas::Discoverer":                               &eventschemas.Discoverer{},
 		"AWS::EventSchemas::Registry":                                 &eventschemas.Registry{},
 		"AWS::EventSchemas::RegistryPolicy":                           &eventschemas.RegistryPolicy{},

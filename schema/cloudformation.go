@@ -37258,6 +37258,301 @@ var CloudformationSchema = `{
             },
             "type": "object"
         },
+        "AWS::OpenSearchService::Domain": {
+            "additionalProperties": false,
+            "properties": {
+                "DeletionPolicy": {
+                    "enum": [
+                        "Delete",
+                        "Retain",
+                        "Snapshot"
+                    ],
+                    "type": "string"
+                },
+                "DependsOn": {
+                    "anyOf": [
+                        {
+                            "pattern": "^[a-zA-Z0-9]+$",
+                            "type": "string"
+                        },
+                        {
+                            "items": {
+                                "pattern": "^[a-zA-Z0-9]+$",
+                                "type": "string"
+                            },
+                            "type": "array"
+                        }
+                    ]
+                },
+                "Metadata": {
+                    "type": "object"
+                },
+                "Properties": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "AccessPolicies": {
+                            "type": "object"
+                        },
+                        "AdvancedOptions": {
+                            "additionalProperties": true,
+                            "patternProperties": {
+                                "^[a-zA-Z0-9]+$": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "AdvancedSecurityOptions": {
+                            "$ref": "#/definitions/AWS::OpenSearchService::Domain.AdvancedSecurityOptionsInput"
+                        },
+                        "ClusterConfig": {
+                            "$ref": "#/definitions/AWS::OpenSearchService::Domain.ClusterConfig"
+                        },
+                        "CognitoOptions": {
+                            "$ref": "#/definitions/AWS::OpenSearchService::Domain.CognitoOptions"
+                        },
+                        "DomainEndpointOptions": {
+                            "$ref": "#/definitions/AWS::OpenSearchService::Domain.DomainEndpointOptions"
+                        },
+                        "DomainName": {
+                            "type": "string"
+                        },
+                        "EBSOptions": {
+                            "$ref": "#/definitions/AWS::OpenSearchService::Domain.EBSOptions"
+                        },
+                        "EncryptionAtRestOptions": {
+                            "$ref": "#/definitions/AWS::OpenSearchService::Domain.EncryptionAtRestOptions"
+                        },
+                        "EngineVersion": {
+                            "type": "string"
+                        },
+                        "LogPublishingOptions": {
+                            "additionalProperties": true,
+                            "patternProperties": {
+                                "^[a-zA-Z0-9]+$": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "NodeToNodeEncryptionOptions": {
+                            "$ref": "#/definitions/AWS::OpenSearchService::Domain.NodeToNodeEncryptionOptions"
+                        },
+                        "SnapshotOptions": {
+                            "$ref": "#/definitions/AWS::OpenSearchService::Domain.SnapshotOptions"
+                        },
+                        "Tags": {
+                            "items": {
+                                "$ref": "#/definitions/Tag"
+                            },
+                            "type": "array"
+                        },
+                        "VPCOptions": {
+                            "$ref": "#/definitions/AWS::OpenSearchService::Domain.VPCOptions"
+                        }
+                    },
+                    "type": "object"
+                },
+                "Type": {
+                    "enum": [
+                        "AWS::OpenSearchService::Domain"
+                    ],
+                    "type": "string"
+                },
+                "UpdateReplacePolicy": {
+                    "enum": [
+                        "Delete",
+                        "Retain",
+                        "Snapshot"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "Type"
+            ],
+            "type": "object"
+        },
+        "AWS::OpenSearchService::Domain.AdvancedSecurityOptionsInput": {
+            "additionalProperties": false,
+            "properties": {
+                "Enabled": {
+                    "type": "boolean"
+                },
+                "InternalUserDatabaseEnabled": {
+                    "type": "boolean"
+                },
+                "MasterUserOptions": {
+                    "$ref": "#/definitions/AWS::OpenSearchService::Domain.MasterUserOptions"
+                }
+            },
+            "type": "object"
+        },
+        "AWS::OpenSearchService::Domain.MasterUserOptions": {
+            "additionalProperties": false,
+            "properties": {
+                "MasterUserARN": {
+                    "type": "string"
+                },
+                "MasterUserName": {
+                    "type": "string"
+                },
+                "MasterUserPassword": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AWS::OpenSearchService::Domain.ClusterConfig": {
+            "additionalProperties": false,
+            "properties": {
+                "DedicatedMasterCount": {
+                    "type": "number"
+                },
+                "DedicatedMasterEnabled": {
+                    "type": "boolean"
+                },
+                "DedicatedMasterType": {
+                    "type": "string"
+                },
+                "InstanceCount": {
+                    "type": "number"
+                },
+                "InstanceType": {
+                    "type": "string"
+                },
+                "WarmCount": {
+                    "type": "number"
+                },
+                "WarmEnabled": {
+                    "type": "boolean"
+                },
+                "WarmType": {
+                    "type": "string"
+                },
+                "ZoneAwarenessConfig": {
+                    "$ref": "#/definitions/AWS::OpenSearchService::Domain.ZoneAwarenessConfig"
+                },
+                "ZoneAwarenessEnabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "AWS::OpenSearchService::Domain.CognitoOptions": {
+            "additionalProperties": false,
+            "properties": {
+                "Enabled": {
+                    "type": "boolean"
+                },
+                "IdentityPoolId": {
+                    "type": "string"
+                },
+                "RoleArn": {
+                    "type": "string"
+                },
+                "UserPoolId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AWS::OpenSearchService::Domain.DomainEndpointOptions": {
+            "additionalProperties": false,
+            "properties": {
+                "CustomEndpoint": {
+                    "type": "string"
+                },
+                "CustomEndpointCertificateArn": {
+                    "type": "string"
+                },
+                "CustomEndpointEnabled": {
+                    "type": "boolean"
+                },
+                "EnforceHTTPS": {
+                    "type": "boolean"
+                },
+                "TLSSecurityPolicy": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AWS::OpenSearchService::Domain.EBSOptions": {
+            "additionalProperties": false,
+            "properties": {
+                "EBSEnabled": {
+                    "type": "boolean"
+                },
+                "Iops": {
+                    "type": "number"
+                },
+                "VolumeSize": {
+                    "type": "number"
+                },
+                "VolumeType": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AWS::OpenSearchService::Domain.EncryptionAtRestOptions": {
+            "additionalProperties": false,
+            "properties": {
+                "Enabled": {
+                    "type": "boolean"
+                },
+                "KmsKeyId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AWS::OpenSearchService::Domain.NodeToNodeEncryptionOptions": {
+            "additionalProperties": false,
+            "properties": {
+                "Enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "AWS::OpenSearchService::Domain.SnapshotOptions": {
+            "additionalProperties": false,
+            "properties": {
+                "AutomatedSnapshotStartHour": {
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "AWS::OpenSearchService::Domain.VPCOptions": {
+            "additionalProperties": false,
+            "properties": {
+                "SecurityGroupIds": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "SubnetIds": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "AWS::OpenSearchService::Domain.ZoneAwarenessConfig": {
+            "additionalProperties": false,
+            "properties": {
+                "AvailabilityZoneCount": {
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
         "AWS::Elasticsearch::Domain": {
             "additionalProperties": false,
             "properties": {
